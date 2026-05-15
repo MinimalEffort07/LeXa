@@ -89,7 +89,8 @@ int main(int argc, char** argv) {
             }
 
             // printf("SymbolTable before: %p\n", symbolTable);
-            symbolTable = reallocarray(symbolTable, ++nSymbols, sizeof(char*));
+            ++nSymbols;
+            symbolTable = realloc(symbolTable, nSymbols*sizeof(char*));
             if(NULL == symbolTable) {
                 puts("Out of memory, couldn't expand symbol table");
                 goto symbolTableCleanup;
